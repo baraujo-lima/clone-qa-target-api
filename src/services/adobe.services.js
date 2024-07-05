@@ -22,7 +22,7 @@ async function fetchAdobeAPI(endpointName, token, id=null, version='v2') {
   const endpoints = {
     activity: `/target/activities/xt/${id}`,
     activities: '/target/activities',
-    offer: `/target/offers/json/${id}`,
+    offer: `/target/offers/json/${id}`, // /target/offers/content/
     audience: `/target/audiences/${id}`,
     audiences: '/target/audiences',
   };
@@ -48,7 +48,7 @@ async function generateTokenAPI() {
   const url = 'https://ims-na1.adobelogin.com/ims/token/v3';
   const response = await fetch(url, options);
   const tokenData = await response.json();
-  console.log(tokenData);
+
   const token = tokenData.access_token;
   
   return token;
